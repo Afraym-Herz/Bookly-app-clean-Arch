@@ -19,7 +19,6 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
   int nextPage = 1 ;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _scrollController = ScrollController() ;
     _scrollController.addListener(_scrollListner); 
