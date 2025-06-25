@@ -17,3 +17,4 @@ class BestSellerBooksCubit extends Cubit<BestSellerBooksState> {
                (faliure) => emit(BestSellerBooksFaliure(faliure.errMessage ))  );
   }
 }
+ 

@@ -17,7 +17,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     if (startIndex >= box.length || endIndex >= box.length ){
       return [] ;
     }
-    return box.values.toList()..sublist(startIndex, endIndex);
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override
