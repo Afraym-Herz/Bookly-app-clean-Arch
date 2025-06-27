@@ -1,6 +1,10 @@
 # Clean Architecture
 
-##  has two main folders is Core folder and Feature folder
+## Main Folders is Core folder and Feature folder ( MAIN SECTION ) :
+
+
+## NOTE : we focus in our project about clean architecture so we don't focus in each screen and don't deal with API that's not real world project
+
 
 ## Core :
 
@@ -145,7 +149,7 @@ The utils folder contains general-purpose helper functions, classes, or constant
 
 ###   Data :
 
-   Purpose : see line 24
+   Purpose : see Data Folder in Feature (main section) ↑↑
 
 ####    data Sources :
 
@@ -187,7 +191,7 @@ The utils folder contains general-purpose helper functions, classes, or constant
 
 ###   Domain :
    
-   Purpose : see line 34
+   Purpose : see Domain Folder in Feature (main section) ↑↑
 
 ####    Entites folder :
     
@@ -216,7 +220,7 @@ The utils folder contains general-purpose helper functions, classes, or constant
 
 ###   Presentation :
    
-   Purpose : see line 45
+   Purpose : see Presenation Folder in Feature (main section) ↑↑
 
 
 ####    Manager :
@@ -290,9 +294,65 @@ The utils folder contains general-purpose helper functions, classes, or constant
        * in listner : success state -> add accepted list to books list (empty list) , faliure state : display showSnackbar
        * in builder : success state -> return FeaturedBooksListView with books (list) , faliure state : return errMessage
 
+######       book_rating : 
+       
+       * it is just a row contain solid star and test text for rating but in actually we must get it from API 
+
+
+
 ######      best_seller_list_view_item : 
 
-       *      
+        * make it in GestureDetector to make it button and if click on it go to detils of book     
+        * use AspectRatio (widget) to set aspect ratio between width and height (2.6/4) for our image 
+        * this time we use Container to make circule border for image and get BoxDecoration and set image by assets and fit it for all space
+        * in right of it the description of books. it is column contain name of book with set maximum two lines if be more than two line it set three point that mean exist more details and use media query to make font responsive
+        * and add another details and add BooksRating widget
+
+######      best_seller_list_view : 
+        
+        * it is listview.builder to build items when we need not all at once 
+        * in parameter physics we set NeverScrollableScrollPhysics that prevent the list to have independent scroll behavior we want feature_list_view and best_seller_list_view have same behavior of scroll in home_view_body by CustomScrollView
+        
+######      home_view_body :
+        
+        * it is CustomScrollView because we want the feature_list_view and best_seller_list_view scroll as the one list so we make them Slivers
+        * in first we put featured_list_view in column and put in it custom_app_bar , featured_books_list_view_blocBulider and text ('Best Seller') is precedes of best_seller_books_list_view 
+        * we put best_seller_books_list_view in the end of custom_list_view and set column of feature_list_view and other widgets as SliverToBoxAdaptor because we make it with fixed height ( or percentage of height of mediaQuere ) and set best_seller_list_view as SliverFillRemaining to fill all space that it needs to set all its elements
+
+######      home_view (main widget of home screen) : 
+
+        * it is the entry point of home screen that contain Scaffold 
+
+
+######      custom_book_details_app_bar : 
+        
+        * it is simple row has two icons close and shopping_cart_outlined  
+        * set close in start and shopping_cart_outlined in the end by spaceBetween 
+
+######      books_action : 
+
+        * it is row contain two custom button with specific styles and borders , their loctions is center
+        * first button is price and its functions is to move to screen for buy 
+        * second button is free preview to review part of book before buy it 
+
+######      body_details_section : 
+        
+        * it is column contain  custom_book_item , name of book , books_rating and books_action in the end
+
+######      similar_books_list_view :
+
+        * it is horizontal list that located in screen of book details 
+        * we put it in sized box with (0.15 of screen height) and its child is custom_book_item
+
+######      book_details_view_body (main widget of details) :
+
+        * we set this widget as CustomScrollView because we want use sliverFillRemaining to use all available space and dealing with mixed static + scrollable content so CustomScrollView it is perfect solution .
+        * inside SliverFillRemaining we set columns contains custom_book_details_app_bar , body_details_section and similar_books_list_view
+
+######      book_details_view (main widget of book_details screen) : 
+
+        * it is the entry point of body screen that contain Scaffold
+
 
 ##  Search
 
@@ -301,89 +361,73 @@ The utils folder contains general-purpose helper functions, classes, or constant
 
 ###   presentation : 
 
-   - Purpose : seel line 45
+   - Purpose : see Presentation Folder in Feature (main section) ↑↑
 
 ####    views :
 
-    - Purpose : see line 236
+    - Purpose : The views folder holds the screens (pages) that make up the visual interface of your feature — it's what the user sees and interacts with. and save all widgets and screens which used to build the UI see the definiation in  Presentation-manager-cubits-Cuibts Functions 
 
 #####     widgets : 
 
-     - Purpose : see line 240
+     - Purpose : 
+      1 - save and contian all widgets we use in screen 
+      2 - make maintain the screen very easy and connect all widgets with other clearly 
 
 ######      custom_search_text_field : 
   
+      * it is simple TextField with outLinedInputBorder and magnifyingGlass icon in the end 
+      * we put InputBorder in external function to be easy to use
+
+######      search_result_list_view :
+
+      * it is vertical list view to show the result of search
       
+######      search_view_body (main widget for search screen) :
 
+      * it is column that contain custom_search_text_field , description and search_result_list_view
 
-### Data
+######      search_view (main widget of search screen) : 
 
-#### data Sources
-
-#### Models
-
-#### Repos
-
-
-
-### Domain
-
-#### Entites
-
-#### abstract Repos
-
-#### Use Cases
+        * it is the entry point of search screen that contain Scaffold 
 
 
 
-### Presentation
+##  Splash 
 
-#### Manager
+###   presentation : 
 
-##### Cubits
+   - Purpose : see Presentation Folder in Feature (main section) ↑↑
 
-###### States of Cubit 
+####    views :
 
-###### Cubit Functions
+    - Purpose : The views folder holds the screens (pages) that make up the visual interface of your feature — it's what the user sees and interacts with. and save all widgets and screens which used to build the UI see the definiation in  Presentation-manager-cubits-Cuibts Functions 
 
-#### Views
+#####     widgets : 
 
+     - Purpose : 
+      1 - save and contian all widgets we use in screen 
+      2 - make maintain the screen very easy and connect all widgets with other clearly
 
+######     sliding_text :
 
+            * This is a stateless widget that receives an Animation<Offset> called slidingAnimation.
+            * Offset is used for position-based animation — perfect for slide transitions.
+            * AnimatedBuilder Listens to the animation (slidingAnimation) and rebuilds whenever the animation value changes.
+            * Keeps performance optimized by only rebuilding what's necessary.
+            * SlideTransition is a built-in Flutter widget that animates its child's position based on an Offset animation ,It applies a translation effect (moving along x or y axis).
+            * If Offset(0, 2) → the widget starts 2 units down as it animates to Offset.zero, it slides up into place.
+            
+######      splash_view_body : 
 
-## Splash
+            * SingleTickerProviderStateMixin is This provides a single "ticker" (basically a clock) for the animation controller , Required when using AnimationController.
+            * initState() is first thing that runs
+            * initSlidingAnimation() : Tween<Offset> Defines the start and end point of the animation 
+            Offset(0, 2) Means the text is 2 "screens" down (vertically) ,
+            Offset.zero Final position (no offset) ,
+            animate(...) Creates the animated value ,
+            forward() Triggers the animation.
 
+######      splash_view (main widget for splash screen) : 
 
-
-### Data
-
-#### data Sources
-
-#### Models
-
-#### Repos
-
-
-
-### Domain
-
-#### Entites
-
-#### abstract Repos
-
-#### Use Cases
-
-
-
-### Presentation
-
-#### Manager
-
-##### Cubits
-
-###### States of Cubit 
-
-###### Cubit Functions
-
-#### Views
+            * it is the scaffold for splash screen 
 
