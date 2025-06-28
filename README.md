@@ -35,6 +35,7 @@
 
 
 
+
 - 2 - Damain Folder :
 
 * Purpose : Contains the core business logic of the feature. It’s the heart of clean architecture — completely independent of Flutter, HTTP, Hive, etc.
@@ -44,7 +45,8 @@
 * Rule: This layer is pure Dart logic — no plugins, no UI, just rules.
 
 
-- 1 - Presentation Folder :
+
+- 3 - Presentation Folder :
 
 * Purpose : Builds the UI and handles state management. Talks to domain layer through use cases and shows results to the user.
 
